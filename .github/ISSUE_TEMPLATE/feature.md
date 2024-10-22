@@ -3,8 +3,7 @@ name: Feature
 about: Release a new feature.
 title: "[feature] - Your feature"
 labels: feature
-assignees: ''
-
+assignees: ""
 ---
 
 **Describe the feature**
