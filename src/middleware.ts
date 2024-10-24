@@ -1,6 +1,7 @@
 import { type MiddlewareConfig, type NextRequest, NextResponse } from "next/server";
 import type { NextURL } from "next/dist/server/web/next-url";
 import Subdomains from "@/services/subdomains";
+import { Subdomain } from "@/types/subdomain";
 
 export const config: MiddlewareConfig = {
   matcher: ["/((?!api/|_next/|_static/|_vercel|[\\w-]+\\.\\w+).*)"],
@@ -17,12 +18,14 @@ async function middleware(req: NextRequest): Promise<NextResponse> {
 
   if (!hostname) throw new Error("No hostname found");
 
-  for (const subdomain of Subdomains.getSubdomains()) {
+  const subdomains: Subdomain[] = Subdomains.getSubdomains();
+
+  for (const subdomain of subdomains) {
     if (Subdomains.isValidSubdomain(subdomain, hostname))
       return NextResponse.rewrite(Subdomains.buildSubdomainUrl(subdomain, path, requestUrl.href));
   }
 
-  throw new Error("No existing subdomain found");
+  return NextResponse.rewrite(Subdomains.buildSubdomainUrl(subdomains[0], path, requestUrl.href));
 }
 
 export default middleware;
