@@ -1,25 +1,15 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, Suspense } from "react";
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
-  SidebarGroup,
-  SidebarGroupLabel,
   SidebarHeader,
   SidebarInput,
   SidebarMenu,
-  SidebarMenuAction,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarMenuSub,
-  SidebarMenuSubButton,
-  SidebarMenuSubItem,
 } from "@/components/_ui/sidebar";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/_ui/collapsible";
-import WikiNavigationServices from "@/services/wiki-navigation/wiki-navigation";
-import { WikiNavigation, WikiNavigationGroup, WikiNavigationItem } from "@/types/wiki-navigation";
-import Link from "next/link";
-import { AlbumIcon, ChevronRightIcon, ChevronsRightIcon } from "lucide-react";
+import { AlbumIcon, ChevronsRightIcon } from "lucide-react";
 import { Button } from "@/components/_ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/_ui/card";
 import {
@@ -28,10 +18,10 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "@/components/_ui/dropdown-menu";
+import WikiSidebarMenu from "@/components/wiki-sidebar-menu/wiki-sidebar-menu";
+import WikiSidebarMenuSkeleton from "@/components/wiki-sidebar-menu-skeleton/wiki-sidebar-menu-skeleton";
 
-export function AppSidebar(): ReactNode {
-  const navigationItems: WikiNavigation[] = WikiNavigationServices.getNavigationItem();
-
+export default function WikiSidebar(): ReactNode {
   return (
     <Sidebar collapsible={"icon"} side={"left"}>
       <SidebarHeader>
@@ -66,48 +56,9 @@ export function AppSidebar(): ReactNode {
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
-        {navigationItems.map(({ title, items }: WikiNavigation) => (
-          <SidebarGroup key={title}>
-            <SidebarGroupLabel>{title}</SidebarGroupLabel>
-            <SidebarMenu>
-              {items.map((item: WikiNavigationGroup) => (
-                <Collapsible key={item.title} asChild={true} defaultOpen={false}>
-                  <SidebarMenuItem>
-                    <SidebarMenuButton asChild={true} tooltip={item.title}>
-                      <Link href={item.url}>
-                        <item.icon />
-                        <span>{item.title}</span>
-                      </Link>
-                    </SidebarMenuButton>
-                    {item.items?.length ? (
-                      <>
-                        <CollapsibleTrigger asChild>
-                          <SidebarMenuAction className="data-[state=open]:rotate-90">
-                            <ChevronRightIcon />
-                            <span className="sr-only">Toggle</span>
-                          </SidebarMenuAction>
-                        </CollapsibleTrigger>
-                        <CollapsibleContent>
-                          <SidebarMenuSub>
-                            {item.items?.map((subItem: WikiNavigationItem) => (
-                              <SidebarMenuSubItem key={subItem.title}>
-                                <SidebarMenuSubButton asChild>
-                                  <Link href={subItem.url}>
-                                    <span>{subItem.title}</span>
-                                  </Link>
-                                </SidebarMenuSubButton>
-                              </SidebarMenuSubItem>
-                            ))}
-                          </SidebarMenuSub>
-                        </CollapsibleContent>
-                      </>
-                    ) : null}
-                  </SidebarMenuItem>
-                </Collapsible>
-              ))}
-            </SidebarMenu>
-          </SidebarGroup>
-        ))}
+        <Suspense fallback={<WikiSidebarMenuSkeleton />}>
+          <WikiSidebarMenu />
+        </Suspense>
       </SidebarContent>
       <SidebarFooter>
         <div className="p-1 group-data-[state=collapsed]:hidden">
