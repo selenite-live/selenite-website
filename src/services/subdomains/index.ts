@@ -17,6 +17,11 @@ class Index {
       subdomain: "download",
       slug: "download",
     },
+    {
+      name: "Website",
+      subdomain: "www",
+      slug: "website",
+    },
   ];
 
   static getSubdomains(): Subdomain[] {
