@@ -48,6 +48,7 @@
       "intro": "Introduction",
       "communication": "Communication",
       "team": "Équipe",
+      "documents": "Documents",
       "logo": "Logo",
       "colors": "Couleurs",
       "fonts": "Polices",
@@ -65,6 +66,16 @@
       "title": "Équipe",
       "subtitle": "Les bonnes équipes créent du grand travail. Derrière chaque idée, chaque design, chaque ligne de code, il y a un effort collectif - un équilibre entre compétence, passion et vision. La force vient de la collaboration, l'innovation prospère grâce à la diversité, et le succès se construit sur la confiance.",
       "description": "Voici les personnes qui façonnent notre marque. Ensemble, nous transformons l'ambition en réalité."
+    },
+    "Documents": {
+      "title": "Documents",
+      "subtitle": "Un document est bien plus qu'un simple fichier - c'est une histoire qui attend d'être racontée. D'un simple email à un rapport complexe, chaque mot, chaque image, chaque graphique fait partie d'un récit plus vaste. Dans un monde où l'information est pouvoir, laissez vos documents parler pour vous.",
+      "description": "Voici les documents qui définissent notre marque. Utilisez-les pour créer un message convaincant et cohérent.",
+      "pdfSectionTitle": "Documents PDF",
+      "project-report-title": "Rapport de projet",
+      "product-sheet-title": "Fiche produit",
+      "communications-plan-title": "Plan de communication",
+      "downloadPdf": "Télécharger le PDF"
     },
     "Logo": {
       "title": "Logo",

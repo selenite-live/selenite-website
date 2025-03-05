@@ -48,6 +48,7 @@
       "intro": "Introduction",
       "communication": "Communication",
       "team": "Team",
+      "documents": "Documents",
       "logo": "Logo",
       "colors": "Colors",
       "fonts": "Fonts",
@@ -65,6 +66,16 @@
       "title": "Team",
       "subtitle": "Good teams create great work. Behind every idea, every design, every line of code, there's a collective effort—a balance of skill, passion, and vision. Strength comes from collaboration, innovation thrives on diversity, and success is built on trust.",
       "description": "These are the people who shape our brand. Together, we turn ambition into reality."
+    },
+    "Documents": {
+      "title": "Documents",
+      "subtitle": "A document is more than just a file—it's a story waiting to be told. From a simple email to a complex report, every word, every image, every chart is a piece of a larger narrative. In a world where information is power, let your documents speak for you.",
+      "description": "These are the documents that define our brand. Use them to create a compelling and consistent message.",
+      "pdfSectionTitle": "PDF Documents",
+      "project-report-title": "Project report",
+      "product-sheet-title": "Product sheet",
+      "communications-plan-title": "Communications plan",
+      "downloadPdf": "Download the PDF"
     },
     "Logo": {
       "title": "Logo",
