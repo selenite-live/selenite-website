@@ -58,10 +58,6 @@ npm build
 npm start
 ```
 
-### Déploiement
-
-Le site est déployé via Coolify et Docker à l'url suivante : [selenite.live](https://selenite.live)
-
 ---
 
 Contributeurs :
